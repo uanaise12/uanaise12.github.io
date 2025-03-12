@@ -50,7 +50,6 @@ nav {
 	margin-right: 3.5rem;
 }
 
-/* Nav link styling */
 .nav-links a {
 	font-size: 1.2rem;
 	text-decoration: none;
@@ -81,6 +80,7 @@ nav {
 	font-weight: 700;
 	color: var(--raisin-black);
 	white-space: nowrap;
+	/* Single-line by default */
 	overflow: hidden;
 	border-right: 3px solid var(--raisin-black);
 	width: 0;
@@ -269,7 +269,6 @@ footer {
 	display: block;
 }
 
-/* Right side: icons + copyright in a vertical stack */
 .footer-right {
 	display: flex;
 	flex-direction: column;
@@ -279,7 +278,6 @@ footer {
 	margin-left: 20rem;
 }
 
-/* Icons row */
 .footer-icons {
 	display: flex;
 	gap: 1rem;
@@ -306,15 +304,12 @@ h2 {
 	color: var(--forest-green);
 }
 
-/* 
-	 +++++++++++++++++++ MEDIA QUERY +++++++++++++++++++
-	 Stack project cards vertically on smaller screens
-	 to prevent text overflow
-  */
+/* =================== MEDIA QUERIES =================== */
+
+/* Stack project cards on smaller screens */
 @media (max-width: 700px) {
 	.project-card {
 		flex-direction: column;
-		/* image on top, text below */
 		align-items: center;
 		text-align: center;
 	}
@@ -322,9 +317,7 @@ h2 {
 	.project-image {
 		margin-bottom: 1rem;
 		width: 180px;
-		/* Optional: reduce image width for small screens */
 		height: auto;
-		/* keep aspect ratio */
 	}
 
 	.project-info {
@@ -332,16 +325,23 @@ h2 {
 	}
 }
 
-@media (max-width: 600px) {
+/* Shrink typed text on screens <600px to avoid overflow */
+@media (max-width: 800px) {
 	.typing {
 		font-size: 1.2rem;
-		/* Keep steps(39, end) to show entire snippet */
-		animation:
-			typing 2s steps(39, end) 1s forwards,
-			blink-caret 0.75s step-end infinite alternate;
 
+		/* Allow multiple lines if truly no space. */
 		white-space: normal;
 		width: auto;
 		overflow: visible;
+
+		/* Forcibly allow breaks in long “words” or code tokens. */
+		word-break: break-word;
+		overflow-wrap: anywhere;
+		/* or break-all if you prefer more aggressive splitting */
+
+		animation:
+			typing 2s steps(39, end) 1s forwards,
+			blink-caret 0.75s step-end infinite alternate;
 	}
 }
