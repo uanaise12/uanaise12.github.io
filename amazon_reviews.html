@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Amazon Reviews Classifier - Anaise's Portfolio</title>
+	<!-- Import JetBrains Mono (or your chosen coding font) -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="amazon_reviews.css">
+</head>
+
+<body>
+
+	<!-- Navigation Bar -->
+	<nav>
+		<div class="logo">
+			<a href="index.html">
+				<img src="logo.png" alt="AU Logo">
+			</a>
+		</div>
+		<div class="nav-links">
+			<a href="index.html">Home</a>
+			<a href="about-me.html">About Me</a>
+		</div>
+	</nav>
+
+	<!-- Main Bias Explorer Section -->
+	<main class="bias-page">
+		<!-- Page Title -->
+		<h1 class="page-title">Amazon Reviews Classifier</h1>
+
+		<!-- Blue Blurb at the Top -->
+		<div class="info-stamps">
+			<div class="stamp">
+				<span class="stamp-title">Duration</span>
+				<span class="stamp-value">April - June 2023</span>
+			</div>
+
+			<div class="stamp">
+				<span class="stamp-title">Motivation</span>
+				<span class="stamp-value">
+					Many Amazon products have dozens or even thousands of reviews, making it <strong>difficult</strong>
+					for buyers to
+					quickly gauge <strong>overall product quality</strong>.
+				</span>
+			</div>
+
+			<div class="stamp">
+				<span class="stamp-title">Solution</span>
+				<span class="stamp-value">
+					A machine learning classification framework that labels products as <strong>"Awesome" (1)</strong>
+					or <strong>"Not Awesome" (0)</strong>
+					—providing a fast, straightforward measure of whether a product is good.
+				</span>
+			</div>
+
+			<div class="stamp">
+				<span class="stamp-title">Technologies Used</span>
+				<div class="chip-list">
+					<span class="chip">Python</span>
+				</div>
+			</div>
+
+
+		</div>
+
+		<!-- Centered description paragraph(s) -->
+		<section class="description">
+			<p class="description-text">
+			<h2>Overview</h2> <br>
+			We used machine learning classification to categorize Amazon products into two classes—1 (“Awesome”) or 0
+			(“Not Awesome”)—based on their reviews. Collaborating with another student, we trained and classified over
+			900,000 reviews. I also experimented with clustering algorithms to see how grouping reviews can reveal
+			broader product sentiments.
+			<br><br>
+			<section class="images-row">
+				<figure>
+					<img src="columns.png" alt="Bias Explorer Screenshot 1" /><br>
+					<figcaption>Provided Dataset Columns</figcaption>
+				</figure>
+			</section>
+			<h2>Feature Selection</h2><br>
+			Our first deliverable focused on three key features:<br><br>
+			<ul>
+				<li><strong>Review Sentiment</strong><br> Using the VADER library, we assigned each review a sentiment
+					value
+					(1 for positive, 0 for neutral, -1 for negative) based on the predominant sentiment in the
+					text.
+				</li>
+				<li><strong>Percentage of Verified Reviews</strong><br> Calculated as the fraction of reviews
+					that were verified
+					out of all reviews for a product.</li>
+				<li><strong>Most Recent Review (in years)</strong><br> Determined by subtracting the latest review’s
+					year
+					from 2020.
+					Older reviews may be less relevant over time due to changes in formulas or manufacturing processes
+				</li>
+			</ul><br>
+			We also incorporated review votes as a weighting factor: reviews with more votes had their sentiment score
+			doubled,
+			reflecting their higher relevance.
+			</p>
+		</section>
+
+		<!-- Horizontal Row of Images, centered -->
+		<section class="images-row">
+			<figure>
+				<img src="featureselection.png" alt="Bias Explorer Screenshot 1" /><br>
+			</figure>
+		</section>
+
+		<section class="description">
+			<p class="description-text">
+			<h2>Training</h2><br>
+			We tried out different classification methods to achieve the best scores using 10-fold cross-validation.
+			Below are some of the trained classification methods we used and their results:
+			<br><br>
+			</p>
+
+			<table class="classifier-table">
+				<thead>
+					<tr>
+						<th>Method</th>
+						<th>F1 Score</th>
+						<th>Precision</th>
+						<th>Recall</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Gaussian Naive Bayes</td>
+						<td>69.8%</td>
+						<td>54.8%</td>
+						<td>100%</td>
+					</tr>
+					<tr>
+						<td>Decision Tree</td>
+						<td>69.4%</td>
+						<td>54.9%</td>
+						<td>94.2%</td>
+					</tr>
+					<tr>
+						<td>XG Boost</td>
+						<td>70.7%</td>
+						<td>54.8%</td>
+						<td>99.4%</td>
+					</tr>
+					<tr>
+						<td>K-Nearest Neighbor</td>
+						<td>54.8%</td>
+						<td>54.7%</td>
+						<td>61.5%</td>
+					</tr>
+					<tr>
+						<td>Random Forest</td>
+						<td>70.7%</td>
+						<td>54.8%</td>
+						<td>99.7%</td>
+					</tr>
+				</tbody>
+			</table>
+			We ended up choosing random forest for prediction because it had a well-balancedconfusion matrix and a good
+			F1 score.
+		</section>
+
+		<section class="description">
+			<p class="description-text">
+			<h2>Individual Contribution: Clustering</h2> <br>
+			I experimented with the dataset to find ways in which reviews can be used for customer profiling. Using
+			Natural Language Processing(NLP) techniques,
+			I extracted semantics of each distinct reviewer's texts, then used clustering methods to group the processed
+			reviews.<br>
+			Here are the evaluated clustering methods and their accuracy:
+			<br><br>
+			<table class="classifier-table-2">
+				<thead>
+					<tr>
+						<th>Method</th>
+						<th>Hyperparameters</th>
+						<th>Silhouette score w/ TF-IDF</th>
+						<th>Silhouette Score w/ Word2vec</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>KMeans</td>
+						<td>n_clusters, n_init, init, random_state</td>
+						<td>-0.01</td>
+						<td>0.12 - 0.13</td>
+					</tr>
+					<tr>
+						<td>K-Medians w/ Manhattan Distance</td>
+						<td>n_clusters, n_init</td>
+						<td>-</td>
+						<td>~0.15</td>
+					</tr>
+					<tr>
+						<td>K-Medoids</td>
+						<td>n_clusters, metric</td>
+						<td>~0.4</td>
+						<td>0.07 - 0.09</td>
+					</tr>
+					<tr>
+						<td>Agglomerative Clustering</td>
+						<td>n_clusters, linkage</td>
+						<td>-</td>
+						<td>0.01 - 0.03</td>
+					</tr>
+					<tr>
+						<td>DBSCAN</td>
+						<td>eps, min_samples</td>
+						<td>-</td>
+						<td>0.3 - 0.4</td>
+					</tr>
+				</tbody>
+			</table><br>
+			<p>
+				After testing out different algorithms, I leveraged word vector mapping to translate numerical data into
+				meaningful word labels,
+				linking them effectively to cluster sizes. Potentially, this approach would enable quantification of
+				customer sentiments and facilitate deeper extraction of insights, offering valuable information for
+				market segmentation and customer analysis.
+			</p>
+
+	</main>
+	<footer>
+		<div class="footer-left">
+			<img src="logo.png" alt="AU Logo" class="footer-logo">
+		</div>
+
+		<div class="footer-right">
+			<div class="footer-icons">
+				<!-- Email Icon -> mailto link -->
+				<a href="mailto:anaise.uwonakunze@northwestern.edu" class="footer-icon-link">
+					<img src="email_icon.png" alt="Email Icon" class="footer-icon">
+				</a>
+
+				<!-- LinkedIn Icon -> external link -->
+				<a href="https://www.linkedin.com/in/anaise-uwonakunze-386160223/" target="_blank"
+					class="footer-icon-link">
+					<img src="linkedin.png" alt="LinkedIn Icon" class="footer-icon">
+				</a>
+				<a href="https://github.com/uanaise12" target="_blank" class="footer-icon-link">
+					<img src="github_icon.jpg" alt="Github icon" class="footer-icon">
+				</a>
+			</div>
+
+			<small class="copyright">
+				&copy; 2025 Anaise Uwonakunze. <br>
+				All rights reserved.
+			</small>
+		</div>
+	</footer>
+</body>
+
+</html>

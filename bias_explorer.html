@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Bias Explorer - Anaise's Portfolio</title>
+	<!-- Import JetBrains Mono (or your chosen coding font) -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="bias_explorer.css">
+</head>
+
+<body>
+
+	<!-- Navigation Bar -->
+	<nav>
+		<div class="logo">
+			<a href="index.html">
+				<img src="logo.png" alt="AU Logo">
+			</a>
+		</div>
+		<div class="nav-links">
+			<a href="index.html">Home</a>
+			<a href="about-me.html">About Me</a>
+		</div>
+	</nav>
+	<!-- Main Bias Explorer Section -->
+	<main class="bias-page">
+		<!-- Page Title -->
+		<h1 class="page-title">Bias Explorer</h1>
+
+		<!-- Blue Blurb at the Top -->
+		<div class="info-stamps">
+			<div class="stamp">
+				<span class="stamp-title">Duration</span>
+				<span class="stamp-value">September - December 2024</span>
+			</div>
+
+			<div class="stamp">
+				<span class="stamp-title">Motivation</span>
+				<span class="stamp-value">
+					Business leaders face many <strong>complex decisions</strong> daily—from budgeting to talent
+					management. Without a
+					<strong>balanced approach</strong>, biases and incomplete information can lead to <strong>suboptimal
+						outcomes</strong> .
+				</span>
+			</div>
+
+			<div class="stamp">
+				<span class="stamp-title">Solution</span>
+				<span class="stamp-value">
+					<strong>Bias Explorer</strong> analyzes <strong>multiple perspectives</strong> to help leaders move
+					beyond their blind spots. By
+					offering <strong>actionable recommendations</strong>, it drives more <strong>informed</strong>,
+					<strong>strategic</strong> decision-making across all
+					business operations.
+				</span>
+			</div>
+
+			<div class="stamp">
+				<span class="stamp-title">Technologies Used</span>
+				<div class="chip-list">
+					<span class="chip">Python</span>
+					<span class="chip">React</span>
+				</div>
+			</div>
+
+
+		</div>
+
+
+		<!-- Centered description paragraph(s) -->
+		<section class="description">
+			<p class="description-text">
+			<h2>Initial Approach & Methodology</h2> <br>
+			The original requirement was to make something that gives advice to people from multiple perspectives.
+			My teammates and I came up with a simple list of user needs and approaches to satisfy them. These
+			included:<br><br>
+			<ul>
+				<li>A user should be able to enter a prompt</li>
+				<li>User privacy</li>
+				<li>User history should be kept</li>
+				<li>A system that generates three perspectives for a provided prompt</li>
+				<li>A personalized system that learns from the user's preferences</li>
+			</ul><br>
+			At this stage, our persective scale ranged from optimistic to neutral to pessimistic. We mapped out the
+			requirements and matched them to the desired functionalities and any potential technological tools required.
+			</p>
+		</section>
+
+		<!-- Horizontal Row of Images, centered -->
+		<table class="needs-table">
+			<thead>
+				<tr>
+					<th>User Need</th>
+					<th>Functionality</th>
+					<th>Tech Stack</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>I want a personalized system that learns from my preferences</td>
+					<td>Memory/user accounts/settings</td>
+					<td>Clerk (manage user accounts -sign-in/sign-out)</td>
+				</tr>
+				<tr>
+					<td>I want to be able to input a description of my problem/dilemma</td>
+					<td>Text input/ prompt</td>
+					<td>React/UI</td>
+				</tr>
+				<tr>
+					<td>I want my information to be secure</td>
+					<td>OpenAI user privacy</td>
+					<td>OpenAI API</td>
+				</tr>
+				<tr>
+					<td>I want to be able to generate advice from different levels ranging from optimistic ->
+						pessimistic</td>
+					<td>Toggle based on subjective user input</td>
+					<td>OpenAI API, React</td>
+				</tr>
+				<tr>
+					<td>I want to get a factual answer as output if it exists</td>
+					<td>Prompt engineering to simulate this</td>
+					<td>OpenAI API</td>
+				</tr>
+				<tr>
+					<td>I want to be able to generate multiple responses for the same question/input</td>
+					<td>Response Generation</td>
+					<td>OpenAI API, React/UI</td>
+				</tr>
+				<tr>
+					<td>I want to be able to revisit my history</td>
+					<td>Local Storage</td>
+					<td>User's local storage</td>
+				</tr>
+			</tbody>
+		</table><br>
+
+		<section class="description">
+			<p class="description-text">
+			<h2>Iterations</h2> <br>
+			Our framework initially relied on the OpenAI API to generate all outputs based on a single prompt. However,
+			we quickly realized that we needed tighter and more specific constraints to achieve optimal results. Over
+			the course of two months, we implemented the following changes: <br> <br>
+			<ul>
+				<li><strong>Narrowing Down the User Scope</strong><br> Targeting a broad audience proved too unfocused
+					and
+					did not guarantee accurate, relevant outcomes. Therefore, we decided to focus on business leaders
+					and managers, who frequently face complex, high-stakes decisions. </li><br>
+				<li><strong>Refining Perspective Generation</strong><br> Our initial approach used optimistic, neutral,
+					and
+					pessimistic viewpoints, which became less relevant for our new, more specialized user group. As a
+					result, we removed that framework and prompted the LLM to generate three perspectives tailored to
+					each specific input. </li><br>
+				<li><strong>Restricting the LLM</strong><br> Since users could enter a wide variety of prompts, we
+					introduced filters to block input unrelated to business advice and decision-making, ensuring more
+					focused and useful output.</li><br>
+				<li><strong>Comparison Effect</strong><br> Comparing diverse perspectives is essential for effective
+					decision-making. We added a side-by-side view to let users easily compare and contrast different
+					insights. Additionally, we included a SWOT analysis
+					for each generated perspective to facilitate more straightforward evaluation.</li><br>
+				<li><strong>Action and Tracking</strong><br> Some recommendations require implementation over time with
+					multiple steps. To address this, we created a dedicated page for any chosen perspective, allowing
+					users to follow actionable steps and track their progress. </li><br>
+			</ul>
+			<section class="images-row">
+				<figure>
+					<img src="floww.png" alt="Final Framework Flow Diagram" />
+					<figcaption>Final Framework Flow Diagram</figcaption> <br>
+				</figure>
+				</p>
+			</section>
+
+			<h2>Personal Contribution</h2> <br>
+			<ul>
+				<li>Worked on the integration of OpenAI into our website. This included making te necessary changes in
+					the prompt,
+					setting up request sending to the API, and putting the output into a suitable format for the
+					frontend. </li>
+				<li> Added the SWOT Analysis functionality for each perspective, making sure to pass in summarized
+					perspective-specific advice for quick generation.</li>
+				<li>Presented different versions of the website alongside my teammates.</li>
+				<li>Helped with setting up the 'Tracking and Actionable Items' part of the website.</li>
+			</ul>
+
+	</main>
+	<footer>
+		<div class="footer-left">
+			<img src="logo.png" alt="AU Logo" class="footer-logo">
+		</div>
+
+		<div class="footer-right">
+			<div class="footer-icons">
+				<!-- Email Icon -> mailto link -->
+				<a href="mailto:anaise.uwonakunze@northwestern.edu" class="footer-icon-link">
+					<img src="email_icon.png" alt="Email Icon" class="footer-icon">
+				</a>
+
+				<!-- LinkedIn Icon -> external link -->
+				<a href="https://www.linkedin.com/in/anaise-uwonakunze-386160223/" target="_blank"
+					class="footer-icon-link">
+					<img src="linkedin.png" alt="LinkedIn Icon" class="footer-icon">
+				</a>
+				<a href="https://github.com/uanaise12" target="_blank" class="footer-icon-link">
+					<img src="github_icon.jpg" alt="Github icon" class="footer-icon">
+				</a>
+			</div>
+
+			<small class="copyright">
+				&copy; 2025 Anaise Uwonakunze. <br>
+				All rights reserved.
+			</small>
+		</div>
+	</footer>
+</body>
+
+</html>

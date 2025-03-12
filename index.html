@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Anaise's Portfolio</title>
+	<!-- Example: Import 'JetBrains Mono' for coding vibe -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+
+	<!-- Navigation Bar -->
+	<nav>
+		<div class="logo">
+			<a href="index.html">
+				<img src="logo.png" alt="AU Logo">
+			</a>
+		</div>
+		<div class="nav-links">
+			<a href="index.html">Home</a>
+			<a href="about-me.html">About Me</a>
+		</div>
+	</nav>
+
+	<!-- Landing / Hero Section -->
+	<section class="landing">
+		<!-- Typed, Colorful Snippet -->
+		<h1 class="typing">
+			<span class="keyword">cout</span> &nbsp;&lt;&lt;&nbsp;
+			<span class="string">"Hello, World!"</span>
+			<br>
+			&nbsp;&lt;&lt;&nbsp;<span class="keyword">endl</span>;
+		</h1>
+
+
+		<h2>I’m Anaise.</h2>
+		<hr />
+		<p>
+			I’m an <strong>engineer</strong> and a <strong>designer</strong>. I thrive on exploring uncharted territory,
+			whether that means tackling unfamiliar projects or picking up a brand-new hobby.<br><br>
+			Welcome to my portfolio—I’m excited to show you how I turn ideas into impactful solutions!
+		</p>
+	</section>
+
+	<!-- Bouncy Inverted Caret for Scrolling -->
+	<a href="#coding-projects" class="scroll-down">
+		<svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+			<!-- A simple downward arrow path -->
+			<path d="M4 7 L12 15 L20 7" />
+		</svg>
+	</a>
+
+	<!-- Coding Projects Section (add 'id' for anchor) -->
+	<section id="coding-projects" class="coding-projects">
+		<h2>&lt;Coding Projects&gt;</h2>
+		<div class="projects-wrapper">
+			<!-- Project Card 1 -->
+			<a class="project-card" href="slack.html">
+				<img class="project-image" src="slackl.png" alt="Slack Logo">
+				<div class="project-info">
+					<h3>Software Engineering Internship</h3>
+					<p>
+						Exploring and working with Slack's extensive codebase to carry out impactful projects as an
+						intern on the Test Experience Team.
+					</p>
+				</div>
+			</a>
+			<!-- Project Card 2 -->
+			<a class="project-card" href="bias_explorer.html">
+				<img class="project-image" src="bias.jpg" alt="Bias Explorer Logo">
+				<div class="project-info">
+					<h3>Bias Explorer</h3>
+					<p>
+						Providing advice to business leaders with multiple perspectives
+						using an interactive bias detection platform.
+					</p>
+				</div>
+			</a>
+			<!-- Project Card 3 -->
+			<a class="project-card" href="amazon_reviews.html">
+				<img class="project-image" src="reviews.jpg" alt="Reviews classification Logo">
+				<div class="project-info">
+					<h3>Amazon Reviews Classifier</h3>
+					<p>
+						Using Machine Learning algorithms to classify products into two classes using their reviews.
+					</p>
+				</div>
+			</a>
+		</div>
+	</section>
+
+	<!-- Design Projects Section -->
+	<section class="design-projects">
+		<h2>&lt;Design Projects&gt;</h2>
+		<div class="projects-wrapper">
+			<!-- Design Project Card 1 -->
+			<a class="project-card" href="thebox.html">
+				<img class="project-image" src="box.png" alt="The Box: Exercising Tool">
+				<div class="project-info">
+					<h3>The Box</h3>
+					<p>
+						An exercising tool for older adults, combining
+						modular design with simple home-based workouts.
+					</p>
+				</div>
+			</a>
+			<!-- Design Project Card 2 -->
+			<a class="project-card" href="ajar.html">
+				<img class="project-image" src="ajar2 (1).png" alt="Ajar: Wheelchair-attached jar opener">
+				<div class="project-info">
+					<h3>Ajar: Wheelchair-attached Jar Opener</h3>
+					<p>
+						A device empowering wheelchair users to open jars easily,
+						designed with safety and ergonomics in mind.
+					</p>
+				</div>
+			</a>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer>
+		<div class="footer-left">
+			<img src="logo.png" alt="AU Logo" class="footer-logo">
+		</div>
+
+		<div class="footer-right">
+			<div class="footer-icons">
+				<!-- Email Icon -> mailto link -->
+				<a href="mailto:anaise.uwonakunze@northwestern.edu" class="footer-icon-link">
+					<img src="email_icon.png" alt="Email Icon" class="footer-icon">
+				</a>
+
+				<!-- LinkedIn Icon -> external link -->
+				<a href="https://www.linkedin.com/in/anaise-uwonakunze-386160223/" target="_blank"
+					class="footer-icon-link">
+					<img src="linkedin.png" alt="LinkedIn Icon" class="footer-icon">
+				</a>
+
+				<a href="https://github.com/uanaise12" target="_blank" class="footer-icon-link">
+					<img src="github_icon.jpg" alt="Github icon" class="footer-icon">
+				</a>
+			</div>
+
+			<small class="copyright">
+				&copy; 2025 Anaise Uwonakunze. <br>
+				All rights reserved.
+			</small>
+		</div>
+	</footer>
+	<script>
+		// Hide arrow near bottom
+		window.addEventListener('scroll', () => {
+			const arrow = document.querySelector('.scroll-down');
+			// Compare how far we've scrolled to total page height
+			if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 50)) {
+				arrow.style.display = 'none'; // hide arrow near bottom
+			} else {
+				arrow.style.display = 'flex'; // show arrow otherwise
+			}
+		});
+	</script>
+</body>
+
+</html>

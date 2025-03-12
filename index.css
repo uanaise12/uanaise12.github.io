@@ -1,0 +1,347 @@
+/* === Color Variables === */
+:root {
+	--cream: #FEFCF6;
+	/* Fresh Cream */
+	--raisin-black: #242124;
+	/* Raisin Black */
+	--forest-green: #5E6C5B;
+	/* Forest Green */
+	--card-bg: #F1F8F5;
+	/* Subtle tinted background for project cards */
+}
+
+/* === Reset & Base === */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'JetBrains Mono', monospace;
+	background-color: var(--cream);
+	color: var(--raisin-black);
+}
+
+/* === Navigation Bar === */
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--forest-green);
+	padding: 0;
+	height: 60px;
+	border-bottom: 2px solid var(--forest-green);
+}
+
+.logo img {
+	height: 60px;
+	width: auto;
+	display: block;
+	max-height: 100%;
+	object-fit: cover;
+	border-left: 2px solid var(--forest-green);
+	padding-left: 2px;
+}
+
+.nav-links {
+	display: flex;
+	align-items: center;
+	margin-right: 3.5rem;
+}
+
+/* Nav link styling */
+.nav-links a {
+	font-size: 1.2rem;
+	text-decoration: none;
+	color: var(--cream);
+	transition: color 0.3s ease;
+	margin-left: 1.5rem;
+}
+
+.nav-links a:hover {
+	color: var(--raisin-black);
+}
+
+/* === Landing Section === */
+.landing {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: calc(100vh - 4rem);
+	text-align: center;
+	padding: 2rem;
+	margin-bottom: 0;
+}
+
+/* Typed effect with color-coded tokens */
+.typing {
+	font-size: 2.5rem;
+	font-weight: 700;
+	color: var(--raisin-black);
+	white-space: nowrap;
+	overflow: hidden;
+	border-right: 3px solid var(--raisin-black);
+	width: 0;
+	margin-bottom: 1rem;
+	animation:
+		typing 2s steps(39, end) 1s forwards,
+		blink-caret 0.75s step-end infinite alternate;
+}
+
+@keyframes typing {
+	from {
+		width: 0;
+	}
+
+	to {
+		width: 39ch;
+	}
+}
+
+@keyframes blink-caret {
+
+	from,
+	to {
+		border-color: transparent;
+	}
+
+	50% {
+		border-color: var(--raisin-black);
+	}
+}
+
+/* Token classes for snippet color */
+.keyword {
+	color: #7ec699;
+}
+
+.string {
+	color: #dcdcaa;
+}
+
+/* Landing subheading, paragraph */
+.landing h2 {
+	font-size: 2rem;
+	margin-top: 0.5rem;
+}
+
+.landing hr {
+	margin: 1rem auto;
+	width: 40%;
+	border: none;
+	border-top: 2px solid var(--forest-green);
+}
+
+.landing p {
+	max-width: 600px;
+	margin: 0 auto;
+	line-height: 1.6;
+	font-size: 1.2rem;
+}
+
+/* Scroll-down Arrow in a Cream Circle */
+.scroll-down {
+	position: fixed;
+	bottom: 2rem;
+	left: 50%;
+	transform: translateX(-50%);
+	text-decoration: none;
+	color: var(--raisin-black);
+	font-size: 2rem;
+	z-index: 999;
+	background-color: var(--cream);
+	border-color: black;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+	animation: bounce 1s infinite alternate;
+}
+
+.arrow {
+	display: inline-block;
+}
+
+@keyframes bounce {
+	from {
+		transform: translateY(0);
+	}
+
+	to {
+		transform: translateY(6px);
+	}
+}
+
+/* === Projects Sections (Coding & Design) === */
+.coding-projects,
+.design-projects {
+	max-width: 1400px;
+	margin: 0 auto;
+	text-align: center;
+	padding: 2rem;
+}
+
+.coding-projects h2,
+.design-projects h2 {
+	font-size: 2rem;
+	margin-bottom: 1.5rem;
+}
+
+/* Projects wrapper in a column layout */
+.projects-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	align-items: center;
+}
+
+/* Each project displayed as a horizontal card */
+.project-card {
+	display: flex;
+	align-items: center;
+	background-color: var(--card-bg);
+	border-radius: 8px;
+	text-decoration: none;
+	color: var(--raisin-black);
+	width: 100%;
+	max-width: 900px;
+	padding: 1rem;
+	gap: 1.5rem;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+	transform: scale(1.02);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.project-image {
+	width: 230px;
+	height: 200px;
+	object-fit: contain;
+	background-color: var(--cream);
+	border-radius: 6px;
+}
+
+.project-info {
+	text-align: left;
+}
+
+.project-info h3 {
+	font-size: 1.4rem;
+	margin-bottom: 0.5rem;
+	font-weight: 700;
+}
+
+.project-info p {
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+/* === Footer === */
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	background-color: var(--forest-green);
+	color: var(--cream);
+	height: 200px;
+	padding: 0;
+}
+
+.footer-left {
+	flex: 0 0 auto;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	padding-left: 1rem;
+}
+
+.footer-logo {
+	height: auto;
+	width: 230px;
+	object-fit: contain;
+	display: block;
+}
+
+/* Right side: icons + copyright in a vertical stack */
+.footer-right {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 3rem;
+	margin-left: 20rem;
+}
+
+/* Icons row */
+.footer-icons {
+	display: flex;
+	gap: 1rem;
+}
+
+.footer-icon {
+	width: 30px;
+	height: auto;
+	object-fit: contain;
+}
+
+footer small {
+	font-size: 0.9rem;
+	color: var(--cream);
+}
+
+.footer-icon-link:hover {
+	opacity: 0.8;
+	transition: opacity 0.2s ease;
+}
+
+/* Headings */
+h2 {
+	color: var(--forest-green);
+}
+
+/* 
+	 +++++++++++++++++++ MEDIA QUERY +++++++++++++++++++
+	 Stack project cards vertically on smaller screens
+	 to prevent text overflow
+  */
+@media (max-width: 700px) {
+	.project-card {
+		flex-direction: column;
+		/* image on top, text below */
+		align-items: center;
+		text-align: center;
+	}
+
+	.project-image {
+		margin-bottom: 1rem;
+		width: 180px;
+		/* Optional: reduce image width for small screens */
+		height: auto;
+		/* keep aspect ratio */
+	}
+
+	.project-info {
+		text-align: center;
+	}
+}
+
+@media (max-width: 600px) {
+	.typing {
+		font-size: 1.2rem;
+		/* Keep steps(39, end) to show entire snippet */
+		animation:
+			typing 2s steps(39, end) 1s forwards,
+			blink-caret 0.75s step-end infinite alternate;
+
+		white-space: normal;
+		width: auto;
+		overflow: visible;
+	}
+}

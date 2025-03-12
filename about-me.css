@@ -1,0 +1,196 @@
+/* === Color Variables === */
+:root {
+	--cream: #FEFCF6;
+	/* Fresh Cream */
+	--raisin-black: #242124;
+	/* Raisin Black */
+	--forest-green: #5E6C5B;
+	/* Forest Green */
+}
+
+/* === Reset & Base === */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	/* Use JetBrains Mono for coding vibe */
+	font-family: 'JetBrains Mono', monospace;
+	background-color: var(--cream);
+	color: var(--raisin-black);
+}
+
+/* Navigation bar */
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--forest-green);
+	padding: 0;
+	/* If you want 3px, do: padding: 3px; (But "3" alone won't do anything) */
+	height: 60px;
+	/* fixed navbar height */
+	border-bottom: 2px solid var(--forest-green);
+}
+
+/* Logo pinned left at 60px tall */
+.logo img {
+	height: 60px;
+	width: auto;
+	display: block;
+	max-height: 100%;
+	object-fit: cover;
+	border-left: 2px solid var(--forest-green);
+	padding-left: 2px;
+}
+
+/* Container for links */
+.nav-links {
+	display: flex;
+	align-items: center;
+	/* Add right spacing if you want extra space from the screen edge: */
+	margin-right: 3.5rem;
+}
+
+/* Nav link styling */
+.nav-links a {
+	font-size: 1.2rem;
+	/* Increase font size */
+	text-decoration: none;
+	color: var(--cream);
+	transition: color 0.3s ease;
+	margin-left: 1.5rem;
+	/* space between links (though you have just one link now) */
+}
+
+/* Hover effect */
+.nav-links a:hover {
+	color: var(--raisin-black);
+}
+
+/* === About Me Section === */
+.about-section {
+	display: flex;
+	flex-wrap: wrap;
+	/* allows responsive wrapping on smaller screens */
+	max-width: 1200px;
+	margin: 2rem auto;
+	padding: 1rem;
+	gap: 2rem;
+	/* space between text + image */
+}
+
+/* Left Column: Text */
+.about-text {
+	flex: 1 1 400px;
+	/* grows, min ~400px */
+	line-height: 1.6;
+}
+
+.about-text h1 {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+	font-weight: 700;
+}
+
+.about-text p {
+	margin-bottom: 1rem;
+	font-size: 1.1rem;
+	max-width: 600px;
+	/* optional to limit line length */
+	line-height: 1.6;
+}
+
+/* Right Column: Image */
+.about-image {
+	flex: 1 1 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.about-image img {
+	max-width: 100%;
+	height: auto;
+	border: 2px solid var(--raisin-black);
+	border-radius: 4px;
+}
+
+footer {
+	display: flex;
+	align-items: center;
+	/* vertical center both left & right sections */
+	justify-content: flex-start;
+	/* no longer space-between, so .footer-right is not far right */
+	background-color: var(--forest-green);
+	color: var(--cream);
+	height: 200px;
+	/* bigger height for the large logo */
+	padding: 0;
+	/* remove extra padding */
+}
+
+/* We’re no longer using .footer-content – not needed */
+
+.footer-left {
+	flex: 0 0 auto;
+	/* keeps it from shrinking */
+	height: 100%;
+	display: flex;
+	align-items: center;
+	/* center the logo vertically in its area */
+	padding-left: 1rem;
+	/* small left padding for the logo */
+}
+
+.footer-logo {
+	height: auto;
+	/* or 100% if you want it to fill vertical space */
+	width: 230px;
+	/* manually set logo width */
+	object-fit: contain;
+	display: block;
+}
+
+/* Right side: icons + copyright in a vertical stack */
+.footer-right {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* center horizontally within its own mini-column */
+	justify-content: center;
+	gap: 3rem;
+
+	/* Instead of margin-right, we shift it left from the far edge 
+	   by controlling spacing to the left. This moves it closer to the center. */
+	margin-left: 20rem;
+}
+
+/* Icons row */
+.footer-icons {
+	display: flex;
+	gap: 1rem;
+}
+
+/* Icon images themselves */
+.footer-icon {
+	width: 30px;
+	/* or 40px if you want bigger icons */
+	height: auto;
+	object-fit: contain;
+}
+
+/* Copyright text */
+footer small {
+	font-size: 0.9rem;
+	color: var(--cream);
+}
+
+/* Optional styling for link hover */
+.footer-icon-link:hover {
+	opacity: 0.8;
+	/* slight hover effect */
+	transition: opacity 0.2s ease;
+}
